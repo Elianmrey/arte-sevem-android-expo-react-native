@@ -5,12 +5,13 @@ import { GetSearchResults } from '../services/SearchContent';
 import Card from '../components/atomics/CardFilms';
 import CardTV from '../components/atomics/CardTV';
 import { RadioButton } from 'react-native-paper';
+import { useFavorites } from '../context/FavoritesContext';
 
 export default function SearchBar() {
     const [searchResult, setSearchResult] = useState([]);
     const [searchType, setSearchType] = useState('movie or tv');
     const [_, setQuery] = useState('');
-
+    const { addFavorite } = useFavorites();
     const SearchContent = async (value) => {
         if (!value.trim()) {
             setSearchResult([]);
@@ -27,25 +28,25 @@ export default function SearchBar() {
 
     const renderItem = ({ item }) => {
         if (item.media_type === 'movie' && searchType === 'movie') {
-            return <Card movie={item} addToFavorites={() => { }} />;
+            return <Card movie={item} addToFavorites={() => { addFavorite(item) }} />;
         }
         if (item.media_type === 'tv' && searchType === 'tv') {
-            return <CardTV tvProgram={item} addToFavorites={() => { }} />;
+            return <CardTV tvProgram={item} addToFavorites={() => { addFavorite(item) }} />;
         }
         if (searchType === 'movie or tv') {
             if (item.media_type === 'movie') {
                 return (
-                    <Card movie={item} addToFavorites={() => { }} />
+                    <Card movie={item} addToFavorites={() => { addFavorite(item) }} />
                 )
             } else if (item.media_type === 'tv') {
                 return (
-                    <CardTV tvProgram={item} addToFavorites={() => { }} />
+                    <CardTV tvProgram={item} addToFavorites={() => { addFavorite(item) }} />
                 )
             };
         }
         return null;
     };
-
+   
     return (
         <LinearGradient
             colors={['#4c669f', '#3b5998', '#192f6a']}
