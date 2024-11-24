@@ -3,34 +3,50 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 
-import Home from './screens/Home';
+import Films from './screens/Films';
 import Details from './screens/Details';
 import Favorites from './screens/Favorites';
 import Search from './components/atomics/SearchBar';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/Ionicons';
+import TvPrograms from './screens/TVPrograms';
 
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
-// Configuração da Stack Navigator para a aba "Home"
-function HomeStack() {
+// Configuração da Stack Navigator para a aba "Films"
+function FilmsStack() {
     return (
         <Stack.Navigator
             screenOptions={{
                 headerShown: false,
             }}
         >
-            <Stack.Screen name="HomeMain" component={DrawerHome} />
+            <Stack.Screen name="FilmsMain" component={DrawerFilms} />
             
             <Stack.Screen name="Details" component={Details} />
         </Stack.Navigator>
     );
 }
 
- function DrawerHome() {
+function TvStack() {
+    return (
+        <Stack.Navigator
+            screenOptions={{
+                headerShown: false,
+            }}
+        >
+            <Stack.Screen name="TvMain" component={DrawerTv} />
+
+            <Stack.Screen name="Details" component={Details} />
+        </Stack.Navigator>
+    );
+}
+
+
+ function DrawerFilms() {
 
         return (
             <Drawer.Navigator
@@ -42,7 +58,7 @@ function HomeStack() {
 
                 }}
             >
-                <Drawer.Screen name="Home" component={Home} />
+                <Drawer.Screen name="Films" component={Films} />
                 <Drawer.Screen name="Favorites" component={Favorites} />
                 
 
@@ -50,7 +66,24 @@ function HomeStack() {
         );
     }
 
+function DrawerTv() {
+    return (
+        <Drawer.Navigator
+            screenOptions={{
+                headerShown: false,
+                drawerStyle: {
+                    backgroundColor: '#fff',
+                },
 
+            }}
+        >
+            <Drawer.Screen name="Programas de TV" component={TvPrograms} />
+            <Drawer.Screen name="Favorites" component={Favorites} />
+
+
+        </Drawer.Navigator>
+    );
+}
 
 export default function AppNavigator() {
     return (
@@ -65,9 +98,13 @@ export default function AppNavigator() {
                     tabBarIcon: ({ focused, color, size }) => {
                         let iconName;
 
-                        if (route.name === 'Home') {
-                            iconName = focused ? 'home' : 'home-outline';
-                        } else if (route.name === 'Search') {
+                        if (route.name === 'Films') {
+                            iconName = focused ? 'film' : 'film-outline';
+                        }
+                        else if (route.name === 'TvPrograms') {
+                            iconName = focused? 'tv' : 'tv-outline';
+                        }
+                        else if (route.name === 'Search') {
                             iconName = focused ? 'search' : 'search-outline';
                         }
                         return <Icon name={iconName} size={size} color={color} />;
@@ -76,12 +113,20 @@ export default function AppNavigator() {
 >
           
                 <Tab.Screen
-                    name="Home"
-                    component={HomeStack}
+                    name="Films"
+                    component={FilmsStack}
                     options={{
-                        tabBarLabel: 'Início',
+                        tabBarLabel: 'Filmes',
                     }}
                    
+                />
+                <Tab.Screen
+                    name="TvPrograms"
+                    component={TvStack}
+                    options={{
+                        tabBarLabel: 'Programas de TV',
+                    }}
+
                 />
         
                 <Tab.Screen

@@ -3,7 +3,7 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import StarsRating from './StarsRating';
 
-const Card = ({ movie }) => {
+const CardFilms = ({ movie }) => {
     const navigation = useNavigation(); // Obtém o objeto navigation
 
     const handlePress = () => {
@@ -20,7 +20,8 @@ const Card = ({ movie }) => {
                 />
                 <Text style={styles.title}>{movie.title}</Text>/
                 <Text style={styles.subtitle}>{movie.release_date}</Text>
-                <StarsRating rating={movie.vote_average} />
+                <Text style={styles.subtitle}> Avaliação: </Text>
+                <Text><StarsRating rating={movie.vote_average} /></Text> 
             </View>
         </TouchableOpacity>
     );
@@ -32,7 +33,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         overflow: 'hidden',
         width: 200,
-        height: 400,
+        height: 420,
         alignItems: 'center',
         marginBottom: 20,
 
@@ -48,4 +49,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Card;
+export default CardFilms;

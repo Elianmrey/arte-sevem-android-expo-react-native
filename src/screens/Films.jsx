@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { View, FlatList, StyleSheet, Text } from 'react-native';
-import Card from '../components/atomics/Card';
+import Card from '../components/atomics/CardFilms';
 import FavoriteBar from '../components/composite/FavoriteBar';
-import { getPopularMovies } from '../services/TMDBService';
+import { getInfo } from '../services/TMDBService';
 import { LinearGradient } from 'expo-linear-gradient';
 
-const Home = () => {
+const Filmes = () => {
     const [favorites, setFavorites] = useState([]);
     const [movies, setMovies] = useState([]);
 
     useEffect(() => {
-        getPopularMovies('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=pt-BR&page=1&sort_by=popularity.desc')
+        getInfo('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=pt-BR&page=1&sort_by=popularity.desc')
             .then((response) => {
                 setMovies(response);
+            }).catch((error) => {
+                console.error(error);
             });
     }, []);
 
@@ -30,34 +32,36 @@ const Home = () => {
 
     return (
         <LinearGradient
-                colors={['#4c669f', '#3b5998', '#192f6a']} style={styles.container}
-            >
-        <View >
-            
-            <Text style={styles.title}>Populares</Text>
-            <FlatList
-                data={movies}
-                renderItem={renderItem}
-                keyExtractor={(item) => item.id.toString()}
-                contentContainerStyle={styles.cardsContainer}
-            />
-            <FavoriteBar favorites={favorites} onRemove={(id) => setFavorites(favorites.filter((f) => f.id !== id))} />
-            
-        </View>
-  </LinearGradient>
+            colors={['#4c669f', '#3b5998', '#192f6a']} style={styles.container}
+        >
+            <View >
+
+                <Text style={styles.title}>Filmes Populares</Text>
+                <FlatList
+                    data={movies}
+                    renderItem={renderItem}
+                    keyExtractor={(item) => item.id.toString()}
+                    contentContainerStyle={styles.cardsContainer}
+                />
+                <Text style={styles.title}>Programas de TV Populares</Text>
+
+                <FavoriteBar favorites={favorites} onRemove={(id) => setFavorites(favorites.filter((f) => f.id !== id))} />
+
+            </View>
+        </LinearGradient>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
-        flex:1,
+        flex: 1,
         alignItems: 'start',
         justifyContent: 'flex-start',
         background: 'linear-gradient(45deg,indigo, #34495e)',
         padding: 15,
-        flexWrap: 'wrap', 
+        flexWrap: 'wrap',
         width: '100%',
-    
+
     },
     title: {
         fontSize: 24,
@@ -71,8 +75,8 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         justifyContent: 'space-between',
         marginBottom: 100,
-       
+
     },
 });
 
-export default Home;
+export default Filmes;

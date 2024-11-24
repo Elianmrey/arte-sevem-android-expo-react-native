@@ -3,14 +3,14 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import StarsRating from './StarsRating';
 
-const CardTv = ({ tvProgram }) => {
+const CardTV = ({ tvProgram }) => {
     const navigation = useNavigation(); // Obtém o objeto navigation
 
     const handlePress = () => {
         // Navega para a tela de detalhes
         navigation.navigate('Details', { tvProgram });
     };
-
+    console.log(tvProgram);
     return (
         <TouchableOpacity onPress={handlePress}>
             <View style={styles.card}>
@@ -48,4 +48,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Card;
+export default CardTV;

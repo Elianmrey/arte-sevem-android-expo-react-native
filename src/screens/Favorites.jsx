@@ -1,6 +1,6 @@
 import React from 'react';
 import { FlatList, View, StyleSheet } from 'react-native';
-import Card from '../components/atomics/Card';
+import Card from '../components/atomics/CardFilms';
 import { useFavorites } from '../context/FavoritesContext';
 
 const Favorites = () => {
