@@ -16,14 +16,14 @@ const Home = () => {
             });
     }, []);
 
-    // Função para adicionar o filme à lista de favoritos
+    // Adicionar o filme à lista de favoritos
     const addToFavorites = (movie) => {
         if (!favorites.find((fav) => fav.id === movie.id)) {
             setFavorites((prev) => [...prev, movie]);
         }
     };
 
-    // Função para renderizar o card
+    // Renderizar o card
     const renderItem = ({ item }) => (
         <Card movie={item} addToFavorites={addToFavorites} />
     );
