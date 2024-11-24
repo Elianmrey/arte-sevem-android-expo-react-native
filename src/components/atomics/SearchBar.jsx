@@ -1,18 +1,43 @@
 import { LinearGradient } from 'expo-linear-gradient';
-import React from 'react';
+import { useState } from 'react';
 import { TextInput, StyleSheet, View } from 'react-native';
+import { FlatList } from 'react-native';
+import { GetSearchResults } from '../../services/SearchContent.module';
+import { Text } from 'react-native';
 
-export default function SearchBar({ value, onChange }) {
+export default function SearchBar() {
+
+    const [searchResult, setSearchResult] = useState('');
+
+    const SearchContent = (event) => { //Concertar Logica!
+        const value = event;
+        setSearchResult(GetSearchResults(value));
+    };
+
+    const renderItem = ({ item }) => (
+        <Card movie={item} addToFavorites={addToFavorites} /> ||
+        <CardTV tvProgram={item} addToFavorites={addToFavorites} />
+    );
+    console.log(searchResult);
     return (
         <LinearGradient colors={['#4c669f', '#3b5998', '#192f6a']} style={styles.gradientContainer} >
        
             <TextInput
                 style={styles.input}
                 placeholder="Pesquisar filmes..."
-                value={value}
-                onChangeText={onChange}
+                value={searchResult}
+                onChangeText={SearchContent}
             />
-       
+            
+            <View style={styles.searchContainer}>
+                <Text style={styles.searchText}>Search</Text>
+               
+                <FlatList
+                    data={searchResult}
+                    renderItem={renderItem}
+                    keyExtractor={(item) => item.id}
+                />
+            </View>
             </LinearGradient>
     );
 }
