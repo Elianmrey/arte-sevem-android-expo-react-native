@@ -30,10 +30,10 @@ export default function SearchBar() {
         if (item.media_type === 'movie' && searchType === 'movie') {
             return <Card movie={item} addToFavorites={() => { addFavorite(item) }} />;
         }
-        if (item.media_type === 'tv' && searchType === 'tv') {
+       else if (item.media_type === 'tv' && searchType === 'tv') {
             return <CardTV tvProgram={item} addToFavorites={() => { addFavorite(item) }} />;
         }
-        if (searchType === 'movie or tv') {
+        else if (searchType === 'movie or tv') {
             if (item.media_type === 'movie') {
                 return (
                     <Card movie={item} addToFavorites={() => { addFavorite(item) }} />
@@ -165,8 +165,8 @@ const styles = StyleSheet.create({
         color: '#fff',
     },
     searchContainer: {
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        justifyContent: 'space-between',
+        width: '100%',
+        padding:0,
+        
     },
 });

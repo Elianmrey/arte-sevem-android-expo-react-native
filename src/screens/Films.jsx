@@ -40,6 +40,7 @@ const Filmes = () => {
                 <FlatList
                     data={movies}
                     renderItem={renderItem}
+                    numColumns={2}
                     keyExtractor={(item) => item.id.toString()}
                     contentContainerStyle={styles.cardsContainer}/>
             </View>
@@ -54,20 +55,17 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         background: 'linear-gradient(45deg,indigo, #34495e)',
         padding: 15,
-        flexWrap: 'wrap',
         width: '100%',
-
     },
     title: {
         fontSize: 24,
         fontWeight: 'bold',
         color: '#fff',
         marginBottom: 20,
+        marginTop: 25,
         textAlign: 'center',
     },
     cardsContainer: {
-        flexDirection: 'row',
-        flexWrap: 'wrap',
         justifyContent: 'space-between',
         marginBottom: 100,
 

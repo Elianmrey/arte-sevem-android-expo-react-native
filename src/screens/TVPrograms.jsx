@@ -41,6 +41,7 @@ const TvPrograms = () => {
                     data={tvPrograms}
                     renderItem={renderItem}
                     keyExtractor={(item) => item.id.toString()}
+                    numColumns={2}
                     contentContainerStyle={styles.CardTVsContainer}
                 />
                 <Text style={styles.title}>Programas de TV Populares</Text>
@@ -58,7 +59,6 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         background: 'linear-gradient(45deg,indigo, #34495e)',
         padding: 15,
-        flexWrap: 'wrap',
         width: '100%',
 
     },
@@ -67,11 +67,10 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#fff',
         marginBottom: 20,
+        marginTop: 25,
         textAlign: 'center',
     },
     CardTVsContainer: {
-        flexDirection: 'row',
-        flexWrap: 'wrap',
         justifyContent: 'space-between',
         marginBottom: 100,
 
