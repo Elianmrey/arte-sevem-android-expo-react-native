@@ -11,7 +11,7 @@ const Filmes = () => {
 
     useEffect(() => {
         getInfo('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=pt-BR&page=1&sort_by=popularity.desc')
-            .then((response) => {
+        .then((response) => {
                 setMovies(response);
             }).catch((error) => {
                 console.error(error);
