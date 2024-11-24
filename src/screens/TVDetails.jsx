@@ -13,20 +13,20 @@ const Details = () => {
         <ScrollView style={styles.container}>
             <Image
                 source={{
-                    uri: `https://image.tmdb.org/t/p/w500${tvProgram.poster_path}`,
+                    uri: `https://image.tmdb.org/t/p/w500${tvProgram.poster_path || tvProgram.backdrop_path }`,
                 }}
                 style={styles.poster}
             />
             <View style={styles.detailsContainer}>
-                <Text style={styles.title}>{tvProgram.title}</Text>
+                <Text style={styles.title}>{tvProgram.original_name || tvProgram.name || 'Não Disponível'}</Text>
                 <Text style={styles.subtitle}>
-                    Lançamento: {tvProgram.release_date}
+                    Lançamento: {tvProgram.first_air_date}
                 </Text>
                 <Text style={styles.subtitle}> Avaliação: </Text>
                 <StarsRating rating={tvProgram.vote_average} /> 
                
                 <Text style={styles.overviewTitle}>Sinopse:</Text>
-                <Text style={styles.overview}>{tvProgram.overview}</Text>
+                <Text style={styles.overview}>{tvProgram.overview || 'Não Disponível'}</Text>
             </View>
         </ScrollView>
     );

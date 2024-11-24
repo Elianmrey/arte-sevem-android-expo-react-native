@@ -15,13 +15,12 @@ const CardFilms = ({ movie }) => {
         <TouchableOpacity onPress={handlePress}>
             <View style={styles.card}>
                 <Image
-                    source={{ uri: `https://image.tmdb.org/t/p/w500${movie.poster_path}` }}
+                    source={{ uri: `https://image.tmdb.org/t/p/w500${movie.poster_path || movie.backdrop_path}` }}
                     style={styles.image}
                 />
                 <Text style={styles.title}>{movie.title}</Text>/
                 <Text style={styles.subtitle}>{movie.release_date}</Text>
-                <Text style={styles.subtitle}> Avaliação: </Text>
-                <Text><StarsRating rating={movie.vote_average} /></Text> 
+                                <Text><StarsRating rating={movie.vote_average} /></Text> 
             </View>
         </TouchableOpacity>
     );
@@ -32,11 +31,10 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(255, 255, 255, 0.3)',
         borderRadius: 10,
         overflow: 'hidden',
-        width: 200,
-        height: 420,
+        width: 185,
+        height: 430,
         alignItems: 'center',
         marginBottom: 20,
-
     },
     image: {
         width: '100%',

@@ -5,14 +5,14 @@ import { TextInput, StyleSheet, View } from 'react-native';
 export default function SearchBar({ value, onChange }) {
     return (
         <LinearGradient colors={['#4c669f', '#3b5998', '#192f6a']} style={styles.gradientContainer} >
-        <View>
+       
             <TextInput
                 style={styles.input}
                 placeholder="Pesquisar filmes..."
                 value={value}
                 onChangeText={onChange}
             />
-            </View>
+       
             </LinearGradient>
     );
 }
@@ -30,8 +30,11 @@ const styles = StyleSheet.create({
     },
    
     input: {
+        
+        width: '100%',
+        height: 60,
         fontSize: 16,
-        padding: 8,
+        paddingLeft: 20,
         backgroundColor: '#fff',
         borderRadius: 15,
         marginTop: 40,

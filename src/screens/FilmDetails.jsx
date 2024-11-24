@@ -13,7 +13,7 @@ const Details = () => {
         <ScrollView style={styles.container}>
             <Image
                 source={{
-                    uri: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+                    uri: `https://image.tmdb.org/t/p/w500${movie.poster_path || movie.backdrop_path}`,
                 }}
                 style={styles.poster}
             />

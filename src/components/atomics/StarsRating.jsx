@@ -9,15 +9,15 @@ export default function StarsRating({ rating }) {
 
     return (
         <View style={styles.container}>
-            {/* Renderiza estrelas cheias */}
+           
             {[...Array(filledStars)].map((_, i) => (
                 <Text key={`filled-${i}`} style={styles.star}>★</Text>
             ))}
-            {/* Renderiza estrelas vazias */}
+           
             {[...Array(emptyStars)].map((_, i) => (
                 <Text key={`empty-${i}`} style={styles.star}>☆</Text>
             ))}
-            {/* Mostra a nota numérica */}
+          
             <Text style={styles.text}>{rating.toFixed(1)}</Text>
         </View>
     );
