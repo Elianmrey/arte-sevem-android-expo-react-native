@@ -8,7 +8,7 @@ const CardTV = ({ tvProgram }) => {
 
     const handlePress = () => {
         // Navega para a tela de detalhes
-        navigation.navigate('Details', { tvProgram });
+        navigation.navigate('TVDetails', { tvProgram });
     };
     console.log(tvProgram);
     return (
@@ -18,8 +18,8 @@ const CardTV = ({ tvProgram }) => {
                     source={{ uri: `https://image.tmdb.org/t/p/w500${tvProgram.poster_path}` }}
                     style={styles.image}
                 />
-                <Text style={styles.title}>{tvProgram.title}</Text>/
-                <Text style={styles.subtitle}>{tvProgram.release_date}</Text>
+                <Text style={styles.title}>{tvProgram.original_name}</Text>/
+                <Text style={styles.subtitle}>{tvProgram.first_air_date}</Text>
                 <StarsRating rating={tvProgram.vote_average} />
             </View>
         </TouchableOpacity>

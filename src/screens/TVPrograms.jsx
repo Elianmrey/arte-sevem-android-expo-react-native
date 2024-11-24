@@ -10,7 +10,7 @@ const TvPrograms = () => {
     const [tvPrograms, setTvPrograms] = useState([]);
 
     useEffect(() => {
-        getInfo('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=pt-BR&page=1&sort_by=popularity.desc')
+        getInfo('https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=pt-BR&page=1&sort_by=popularity.desc')
             .then((response) => {
                 setTvPrograms(response);
             }).catch((error) => {
@@ -31,7 +31,7 @@ const TvPrograms = () => {
 
     // Renderizar o CardTV
     const renderItem = ({ item }) => (
-        <CardTV movie={item} addToFavorites={addToFavorites} />
+        <CardTV tvProgram={item} addToFavorites={addToFavorites} />
     );
 
     return (

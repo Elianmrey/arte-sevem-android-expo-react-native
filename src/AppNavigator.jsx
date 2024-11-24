@@ -4,12 +4,13 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 
 import Films from './screens/Films';
-import Details from './screens/Details';
+import FilmDetails from './screens/FilmDetails';
 import Favorites from './screens/Favorites';
 import Search from './components/atomics/SearchBar';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/Ionicons';
 import TvPrograms from './screens/TVPrograms';
+import TVDetails from './screens/TVDetails';
 
 
 const Tab = createBottomTabNavigator();
@@ -26,7 +27,7 @@ function FilmsStack() {
         >
             <Stack.Screen name="FilmsMain" component={DrawerFilms} />
             
-            <Stack.Screen name="Details" component={Details} />
+            <Stack.Screen name="Details" component={FilmDetails} />
         </Stack.Navigator>
     );
 }
@@ -40,7 +41,7 @@ function TvStack() {
         >
             <Stack.Screen name="TvMain" component={DrawerTv} />
 
-            <Stack.Screen name="Details" component={Details} />
+            <Stack.Screen name="TVDetails" component={TVDetails} />
         </Stack.Navigator>
     );
 }
