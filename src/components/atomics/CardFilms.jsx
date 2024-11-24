@@ -8,7 +8,7 @@ const CardFilms = ({ movie }) => {
 
     const handlePress = () => {
       
-        navigation.navigate('Details', { movie });
+        navigation.navigate('FilmDetails', { movie });
     };
 
     return (

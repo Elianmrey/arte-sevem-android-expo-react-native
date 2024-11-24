@@ -9,6 +9,7 @@ const Details = () => {
     const route = useRoute();
     const { tvProgram } = route.params; // Recebe os detalhes do filme.
 
+    console.log(tvProgram);
     return (
         <ScrollView style={styles.container}>
             <Image
@@ -26,6 +27,7 @@ const Details = () => {
                 <Text> <StarsRating rating={tvProgram.vote_average} /> </Text>
                 <Text style={styles.overviewTitle}>Sinopse:</Text>
                 <Text style={styles.overview}>{tvProgram.overview || 'Não Disponível'}</Text>
+                
             </View>
         </ScrollView>
     );

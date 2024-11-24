@@ -27,7 +27,7 @@ function FilmsStack() {
         >
             <Stack.Screen name="FilmsMain" component={DrawerFilms} />
             
-            <Stack.Screen name="Details" component={FilmDetails} />
+            <Stack.Screen name="FilmDetails" component={FilmDetails} />
         </Stack.Navigator>
     );
 }
