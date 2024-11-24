@@ -23,8 +23,7 @@ const Details = () => {
                     Lançamento: {tvProgram.first_air_date}
                 </Text>
                 <Text style={styles.subtitle}> Avaliação: </Text>
-                <StarsRating rating={tvProgram.vote_average} /> 
-               
+                <Text> <StarsRating rating={tvProgram.vote_average} /> </Text>
                 <Text style={styles.overviewTitle}>Sinopse:</Text>
                 <Text style={styles.overview}>{tvProgram.overview || 'Não Disponível'}</Text>
             </View>

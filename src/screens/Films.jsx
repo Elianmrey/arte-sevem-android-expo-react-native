@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { View, FlatList, StyleSheet, Text } from 'react-native';
 import Card from '../components/atomics/CardFilms';
 import FavoriteBar from '../components/composite/FavoriteBar';
@@ -41,12 +41,7 @@ const Filmes = () => {
                     data={movies}
                     renderItem={renderItem}
                     keyExtractor={(item) => item.id.toString()}
-                    contentContainerStyle={styles.cardsContainer}
-                />
-                <Text style={styles.title}>Programas de TV Populares</Text>
-
-                <FavoriteBar favorites={favorites} onRemove={(id) => setFavorites(favorites.filter((f) => f.id !== id))} />
-
+                    contentContainerStyle={styles.cardsContainer}/>
             </View>
         </LinearGradient>
     );

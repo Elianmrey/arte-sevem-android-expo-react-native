@@ -23,7 +23,7 @@ const Details = () => {
                     Lançamento: {movie.release_date}
                 </Text>
                 <Text style={styles.subtitle}> Avaliação: </Text>
-                <StarsRating rating={movie.vote_average} /> 
+              <Text> <StarsRating rating={movie.vote_average} /> </Text>
                
                 <Text style={styles.overviewTitle}>Sinopse:</Text>
                 <Text style={styles.overview}>{movie.overview}</Text>

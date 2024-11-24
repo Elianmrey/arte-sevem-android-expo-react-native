@@ -1,15 +1,15 @@
 import React from 'react';
 import { FlatList, View, StyleSheet } from 'react-native';
-import Card from '../components/atomics/CardFilms';
+import CardFilms from '../components/atomics/CardFilms';
 import { useFavorites } from '../context/FavoritesContext';
 
 const Favorites = () => {
     const { favorites, removeFavorite } = useFavorites();
 
     const renderItem = ({ item }) => (
-        <Card
+        <CardFilms
             movie={item}
-            onPress={() => removeFavorite(item.id)} // Remove ao tocar (exemplo)
+            onPress={() => removeFavorite(item.id)} 
         />
     );
 

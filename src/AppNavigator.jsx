@@ -6,7 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import Films from './screens/Films';
 import FilmDetails from './screens/FilmDetails';
 import Favorites from './screens/Favorites';
-import Search from './components/atomics/SearchBar';
+import Search from './screens/SearchBar';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/Ionicons';
 import TvPrograms from './screens/TVPrograms';
@@ -65,7 +65,25 @@ function TvStack() {
 
             </Drawer.Navigator>
         );
-    }
+}
+
+function SearchStack() {
+    return (
+        <Stack.Navigator
+            screenOptions={{
+                headerShown: false,
+            }}
+        >
+            <Stack.Screen name="Search" component={Search} />
+
+            <Stack.Screen name="FilmDetails" component={FilmDetails} />
+            <Stack.Screen name="TVDetails" component={TVDetails} />
+        </Stack.Navigator>
+    );
+}
+
+
+
 
 function DrawerTv() {
     return (
@@ -80,8 +98,6 @@ function DrawerTv() {
         >
             <Drawer.Screen name="Programas de TV" component={TvPrograms} />
             <Drawer.Screen name="Favorites" component={Favorites} />
-
-
         </Drawer.Navigator>
     );
 }
@@ -132,7 +148,7 @@ export default function AppNavigator() {
         
                 <Tab.Screen
                     name="Search"
-                    component={Search}
+                    component={SearchStack}
                     options={{
                         tabBarLabel: 'Buscar',
                     }}

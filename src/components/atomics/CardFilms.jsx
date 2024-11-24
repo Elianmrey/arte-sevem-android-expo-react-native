@@ -4,10 +4,10 @@ import { useNavigation } from '@react-navigation/native';
 import StarsRating from './StarsRating';
 
 const CardFilms = ({ movie }) => {
-    const navigation = useNavigation(); // Obtém o objeto navigation
+    const navigation = useNavigation(); 
 
     const handlePress = () => {
-        // Navega para a tela de detalhes
+      
         navigation.navigate('Details', { movie });
     };
 
@@ -18,7 +18,7 @@ const CardFilms = ({ movie }) => {
                     source={{ uri: `https://image.tmdb.org/t/p/w500${movie.poster_path || movie.backdrop_path}` }}
                     style={styles.image}
                 />
-                <Text style={styles.title}>{movie.title}</Text>/
+                <Text style={styles.title}>{movie.title}</Text>
                 <Text style={styles.subtitle}>{movie.release_date}</Text>
                                 <Text><StarsRating rating={movie.vote_average} /></Text> 
             </View>

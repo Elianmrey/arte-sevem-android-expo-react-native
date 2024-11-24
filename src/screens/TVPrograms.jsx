@@ -18,11 +18,7 @@ const TvPrograms = () => {
             });
     }, []);
 
-    console.log(tvPrograms);
-
-
-
-    // Adicionar o filme à lista de favoritos
+    // Adicionar o Programa de TV à lista de favoritos
     const addToFavorites = (movie) => {
         if (!favorites.find((fav) => fav.id === movie.id)) {
             setFavorites((prev) => [...prev, movie]);
