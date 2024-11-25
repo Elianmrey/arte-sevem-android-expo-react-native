@@ -4,6 +4,7 @@ import { getInfo } from '../services/TMDBService';
 import { LinearGradient } from 'expo-linear-gradient';
 import DraggableFilmCard from '../components/atomics/DraggableFilmCard';
 import FavoriteBar from '../components/composite/FavoriteBar';
+import AddFavoritesBar from './../components/atomics/AddFavoritesBar';
 
 
 const Films = () => {
@@ -24,6 +25,10 @@ const Films = () => {
         <LinearGradient
             colors={['#4c669f', '#3b5998', '#192f6a']} style={styles.container}
         >
+            
+<AddFavoritesBar />
+            
+
             <Text style={styles.title}>Filmes Populares</Text>
             <ScrollView contentContainerStyle={styles.cardsContainer}>
                 {movies.map((movie) => (
