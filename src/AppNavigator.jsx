@@ -11,6 +11,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/Ionicons';
 import TvPrograms from './screens/TVPrograms';
 import TVDetails from './screens/TVDetails';
+import FavoriteBar from './components/composite/FavoriteBar';
 
 
 const Tab = createBottomTabNavigator();
@@ -26,8 +27,8 @@ function FilmsStack() {
             }}
         >
             <Stack.Screen name="FilmsMain" component={DrawerFilms} />
-            
             <Stack.Screen name="FilmDetails" component={FilmDetails} />
+            <Stack.Screen name="FavoriteBar" component={FavoriteBarStack} /> 
         </Stack.Navigator>
     );
 }
@@ -40,8 +41,8 @@ function TvStack() {
             }}
         >
             <Stack.Screen name="TvMain" component={DrawerTv} />
-
             <Stack.Screen name="TVDetails" component={TVDetails} />
+            <Stack.Screen name="FavoriteBar" component={FavoriteBarStack} />
         </Stack.Navigator>
     );
 }
@@ -60,7 +61,7 @@ function TvStack() {
                 }}
             >
                 <Drawer.Screen name="Films" component={Films} />
-                <Drawer.Screen name="Favorites" component={Favorites} />
+                <Drawer.Screen name="Favorites" component={FavoriteStack} />
                 
 
             </Drawer.Navigator>
@@ -97,10 +98,42 @@ function DrawerTv() {
             }}
         >
             <Drawer.Screen name="Programas de TV" component={TvPrograms} />
-            <Drawer.Screen name="Favorites" component={Favorites} />
+            <Drawer.Screen name="Favorites" component={FavoriteStack} />
         </Drawer.Navigator>
     );
 }
+
+function FavoriteStack() {
+    return (
+        <Stack.Navigator
+            screenOptions={{
+                headerShown: false,
+            }}
+        >
+            <Stack.Screen name="Favorites" component={Favorites} />
+            <Stack.Screen name="FilmDetails" component={FilmDetails} />
+            <Stack.Screen name="TVDetails" component={TVDetails} />
+
+          
+        </Stack.Navigator>
+    );
+}
+
+function FavoriteBarStack() {
+    return (
+        <Stack.Navigator
+            screenOptions={{
+                headerShown: false,
+            }}
+        >
+            <Stack.Screen name="FavoriteBar" component={FavoriteBar} />
+            <Stack.Screen name="FilmDetails" component={FilmDetails} />
+            <Stack.Screen name="TVDetails" component={TVDetails} />
+
+        </Stack.Navigator>
+    );
+}
+
 
 export default function AppNavigator() {
     return (

@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react';
-import { View, FlatList, StyleSheet, Text } from 'react-native';
-import Card from '../components/atomics/CardFilms';
-import FavoriteBar from '../components/composite/FavoriteBar';
+import {StyleSheet, Text, ScrollView } from 'react-native';
 import { getInfo } from '../services/TMDBService';
 import { LinearGradient } from 'expo-linear-gradient';
+import DraggableFilmCard from '../components/atomics/DraggableFilmCard';
+import FavoriteBar from '../components/composite/FavoriteBar';
+import { useFavorites } from '../context/FavoritesContext';
 
-const Filmes = () => {
-    const [favorites, setFavorites] = useState([]);
+const Films = () => {
+    
     const [movies, setMovies] = useState([]);
+    const { favorites } = useFavorites();
 
     useEffect(() => {
         getInfo('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=pt-BR&page=1&sort_by=popularity.desc')
@@ -18,33 +20,21 @@ const Filmes = () => {
             });
     }, []);
 
-    // Adicionar o filme à lista de favoritos
-    const addToFavorites = (movie) => {
-        if (!favorites.find((fav) => fav.id === movie.id)) {
-            setFavorites((prev) => [...prev, movie]);
-        }
-    };
-
-    // Renderizar o card
-    const renderItem = ({ item }) => (
-        <Card movie={item} addToFavorites={addToFavorites} />
-    );
-
     return (
         <LinearGradient
             colors={['#4c669f', '#3b5998', '#192f6a']} style={styles.container}
         >
-            <View >
-
-                <Text style={styles.title}>Filmes Populares</Text>
-                <FlatList
-                    data={movies}
-                    renderItem={renderItem}
-                    numColumns={2}
-                    keyExtractor={(item) => item.id.toString()}
-                    contentContainerStyle={styles.cardsContainer}/>
-            </View>
+            <Text style={styles.title}>Filmes Populares</Text>
+            <ScrollView contentContainerStyle={styles.cardsContainer}>
+                {movies.map((movie) => (
+                    <DraggableFilmCard key={movie.id} movie={movie}/>
+                ))}
+            </ScrollView>
+            
+            <FavoriteBar style={styles.favoriteBar}  />
+        
         </LinearGradient>
+
     );
 };
 
@@ -68,8 +58,10 @@ const styles = StyleSheet.create({
     cardsContainer: {
         justifyContent: 'space-between',
         marginBottom: 100,
-
+        width: '100%',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
     },
 });
 
-export default Filmes;
+export default Films;

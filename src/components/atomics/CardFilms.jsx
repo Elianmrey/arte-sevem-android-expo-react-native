@@ -22,6 +22,7 @@ const CardFilms = ({ movie }) => {
                 <Text style={styles.subtitle}>{movie.release_date}</Text>
                                 <Text><StarsRating rating={movie.vote_average} /></Text> 
             </View>
+
         </TouchableOpacity>
     );
 };

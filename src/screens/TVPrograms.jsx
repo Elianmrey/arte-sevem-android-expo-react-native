@@ -1,12 +1,14 @@
-import  { useEffect, useState } from 'react';
-import { View, FlatList, StyleSheet, Text } from 'react-native';
-import CardTV from '../components/atomics/CardTV';
+import { useEffect, useState } from 'react';
+import {  StyleSheet, Text } from 'react-native';
+
 import FavoriteBar from '../components/composite/FavoriteBar';
 import { getInfo } from '../services/TMDBService';
 import { LinearGradient } from 'expo-linear-gradient';
+import DraggableTVCard from '../components/atomics/DraggableTVCard';
+import { ScrollView } from 'react-native';
 
 const TvPrograms = () => {
-    const [favorites, setFavorites] = useState([]);
+    
     const [tvPrograms, setTvPrograms] = useState([]);
 
     useEffect(() => {
@@ -19,35 +21,23 @@ const TvPrograms = () => {
     }, []);
 
     // Adicionar o Programa de TV à lista de favoritos
-    const addToFavorites = (movie) => {
-        if (!favorites.find((fav) => fav.id === movie.id)) {
-            setFavorites((prev) => [...prev, movie]);
-        }
-    };
+   
 
-    // Renderizar o CardTV
-    const renderItem = ({ item }) => (
-        <CardTV tvProgram={item} addToFavorites={addToFavorites} />
-    );
+
+
 
     return (
         <LinearGradient
             colors={['#4c669f', '#3b5998', '#192f6a']} style={styles.container}
         >
-            <View >
+            <ScrollView  contentContainerStyle={styles.CardTVsContainer}>
 
                 <Text style={styles.title}>Programas de TV Populares</Text>
-                <FlatList
-                    data={tvPrograms}
-                    renderItem={renderItem}
-                    keyExtractor={(item) => item.id.toString()}
-                    numColumns={2}
-                    contentContainerStyle={styles.CardTVsContainer}
-                />
-                <Text style={styles.title}>Programas de TV Populares</Text>
-
-                <FavoriteBar favorites={favorites} onRemove={(id) => setFavorites(favorites.filter((f) => f.id !== id))} />
-            </View>
+                {tvPrograms.map((tvProgram) => (
+                    <DraggableTVCard key={tvProgram.id} tvProgram={tvProgram}/>
+                ))}
+            </ScrollView>
+            <FavoriteBar style={styles.favoriteBar}/>
         </LinearGradient>
     );
 };
@@ -73,7 +63,17 @@ const styles = StyleSheet.create({
     CardTVsContainer: {
         justifyContent: 'space-between',
         marginBottom: 100,
-
+        width: '100%',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+    },
+    favoriteBar: {
+        marginBottom: 20,
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        backgroundColor: 'orange',
     },
 });
 
