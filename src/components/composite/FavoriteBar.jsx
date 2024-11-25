@@ -26,17 +26,18 @@ const FavoriteBar = () => {
                 <Text style={styles.favoriteBarTitle}>Barra de Favoritos</Text>
             <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.favoriteList}>
              
-                {isMovie.map((movie) => (
+                {isMovie.map((movie, index) => (
                     movie.date_release || movie.title || movie.original_title ?
-                        <TouchableOpacity>
+                        <TouchableOpacity key={index}>
                                 <Ionicons name="remove-circle" size={24} color="red" onPress={() => removeFavorite(movie.id)} />
-                                <CardFilms key={movie.id} movie={movie} />
+                                <CardFilms  movie={movie} />
                         </TouchableOpacity>: null))  }
                        
-                {isTV.map((tvProgram) => (
-                    tvProgram.first_air_date && tvProgram.name ? <TouchableOpacity >
+                {isTV.map((tvProgram, index) => (
+                    tvProgram.first_air_date && tvProgram.name ?
+                        <TouchableOpacity key={index}>
                             <Ionicons name="remove-circle" size={24} color="red" onPress={() => removeFavorite(tvProgram.id)} />
-                            <CardTV key={tvProgram.id} tvProgram={tvProgram}   />
+                            <CardTV  tvProgram={tvProgram}   />
                 </TouchableOpacity> : null))
             }
             </ScrollView>
