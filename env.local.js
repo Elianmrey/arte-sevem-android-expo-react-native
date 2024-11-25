@@ -1,1 +1,1 @@
-export const EnvironmentKey = ''
+export const EnvironmentKey = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxOTNhNzNhYzdjNGY1ODA4MDFjMzAwMjBlZTYwZGVjNSIsIm5iZiI6MTcyMzczNzAyMC4wNDUyNTcsInN1YiI6IjY2OWVmOTliMDJhOTk2MGU5NjBhNGYzYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.iaX8Dn956UnhFT9XOFJxEhmDHKrFEy4xMktc4DQ-OJA'
