@@ -44,7 +44,6 @@ const styles = StyleSheet.create({
         alignItems: 'start',
         justifyContent: 'flex-start',
         background: 'linear-gradient(45deg,indigo, #34495e)',
-        padding: 15,
         width: '100%',
     },
     title: {
@@ -56,7 +55,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     cardsContainer: {
-        justifyContent: 'space-between',
+        
         marginBottom: 100,
         width: '100%',
         flexDirection: 'row',

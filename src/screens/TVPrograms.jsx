@@ -48,7 +48,6 @@ const styles = StyleSheet.create({
         alignItems: 'start',
         justifyContent: 'flex-start',
         background: 'linear-gradient(45deg,indigo, #34495e)',
-        padding: 15,
         width: '100%',
 
     },
