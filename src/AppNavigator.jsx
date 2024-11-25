@@ -14,6 +14,7 @@ import TVDetails from './screens/TVDetails';
 import FavoriteBar from './components/composite/FavoriteBar';
 
 
+
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -43,6 +44,7 @@ function TvStack() {
             <Stack.Screen name="TvMain" component={DrawerTv} />
             <Stack.Screen name="TVDetails" component={TVDetails} />
             <Stack.Screen name="FavoriteBar" component={FavoriteBarStack} />
+            
         </Stack.Navigator>
     );
 }
@@ -129,6 +131,8 @@ function FavoriteBarStack() {
             <Stack.Screen name="FavoriteBar" component={FavoriteBar} />
             <Stack.Screen name="FilmDetails" component={FilmDetails} />
             <Stack.Screen name="TVDetails" component={TVDetails} />
+            {/* <Stack.Screen name="CardTV" component={CardTV} />
+            <Stack.Screen name="CardFilm" component={CardFilm} /> */}
 
         </Stack.Navigator>
     );
