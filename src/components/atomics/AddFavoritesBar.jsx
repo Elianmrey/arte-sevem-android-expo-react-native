@@ -1,6 +1,6 @@
-import React, { useState, useRef } from 'react';
+import  { useState, useRef } from 'react';
 import { Text, StyleSheet, Animated } from 'react-native';
-import { GestureHandlerRootView, PanGestureHandler, State } from 'react-native-gesture-handler';
+import { PanGestureHandler, State } from 'react-native-gesture-handler';
 
 const AddFavoritesBar = () => {
     const [isHovered, setIsHovered] = useState(false);

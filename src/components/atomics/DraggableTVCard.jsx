@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { StyleSheet, View, Animated, PanResponder, Text, Image, TouchableOpacity } from "react-native";
 import StarsRating from "./StarsRating";
 import { useFavorites } from "../../context/FavoritesContext"; 

@@ -1,5 +1,5 @@
 import React from 'react';
-import {  View, StyleSheet, ScrollView, Text } from 'react-native';
+import { StyleSheet, ScrollView, Text } from 'react-native';
 import { useFavorites } from '../context/FavoritesContext';
 import CardTV from '../components/atomics/CardTV';
 import CardFilms from '../components/atomics/CardFilms';
