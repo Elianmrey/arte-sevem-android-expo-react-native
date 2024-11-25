@@ -8,6 +8,8 @@ export const FavoriteProvider = ({ children }) => {
     const addFavorite = (movie) => {
         if (!favorites.find((fav) => fav.id === movie.id)) {
             setFavorites((prev) => [...prev, movie]);
+        }else if (favorites.find((fav) => fav.id === movie.id)) {
+            return;
         }
     };
 
