@@ -9,7 +9,7 @@ const Details = () => {
     const route = useRoute();
     const { tvProgram } = route.params; // Recebe os detalhes do filme.
 
-    console.log(tvProgram);
+
     return (
         <ScrollView style={styles.container}>
             <Image

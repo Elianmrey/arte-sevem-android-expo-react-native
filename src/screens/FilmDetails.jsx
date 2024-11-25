@@ -7,7 +7,7 @@ const { width } = Dimensions.get('window');
 
 const Details = () => {
     const route = useRoute();
-    const { movie } = route.params; // Recebe os detalhes do filme.
+    const { movie } = route.params; 
 
     return (
         <ScrollView style={styles.container}>
