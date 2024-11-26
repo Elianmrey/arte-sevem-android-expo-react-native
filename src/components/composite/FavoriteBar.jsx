@@ -21,7 +21,7 @@ const FavoriteBar = () => {
     return (
         isClosed? <View style={styles.favoriteBar}>
             <View style={styles.closeIconContainer}>
-                 <Ionicons name='close' size={24} color="white" onPress={() => setIsClosed(!isClosed)} style={{  textAlign: 'end' }} />
+                <Ionicons name='close' size={24} color="white" onPress={() => setIsClosed(!isClosed)} style={{ textAlign: 'end', marginRight: 5, backgroundColor: 'red', borderRadius: 50, }} />
             </View>
                 <Text style={styles.favoriteBarTitle}>Lista de Favoritos</Text>
             <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.favoriteList}>
@@ -43,7 +43,7 @@ const FavoriteBar = () => {
             </ScrollView>
         </View> : <View style={styles.closeIconContainer}>
                 <Text style={styles.favoriteBarTitle}>Lista de Favoritos</Text>
-                <Ionicons name='heart' size={24} color="red" onPress={() => setIsClosed(!isClosed)} style={{ textAlign: 'end' }} />
+                <Ionicons name='heart' size={24} color="red" onPress={() => setIsClosed(!isClosed)} style={{ textAlign: 'end', marginRight: 15, }} />
               
             </View>
            
