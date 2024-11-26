@@ -40,8 +40,14 @@ const styles = StyleSheet.create({
         padding: 10,
         marginTop: 20,
     },
-    title: { color: 'white', fontSize: 20, fontWeight: 'bold', textAlign: 'center', marginTop: 50, marginBottom: 15, fontSize: 25 },
-
+    title: {
+        color: 'white',
+        fontWeight: 'bold',
+        textAlign: 'center',
+        marginTop: 50,
+        marginBottom: 15,
+        fontSize: 25,
+    }
 });
 
 export default Favorites;
