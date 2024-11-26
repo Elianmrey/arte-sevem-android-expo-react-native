@@ -23,7 +23,7 @@ const FavoriteBar = () => {
             <View style={styles.closeIconContainer}>
                  <Ionicons name='close' size={24} color="white" onPress={() => setIsClosed(!isClosed)} style={{  textAlign: 'end' }} />
             </View>
-                <Text style={styles.favoriteBarTitle}>Barra de Favoritos</Text>
+                <Text style={styles.favoriteBarTitle}>Lista de Favoritos</Text>
             <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.favoriteList}>
              
                 {isMovie.map((movie, index) => (
