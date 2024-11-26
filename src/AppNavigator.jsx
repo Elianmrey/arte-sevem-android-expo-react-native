@@ -58,8 +58,10 @@ function TvStack() {
                 screenOptions={{
                     headerShown: false,
                     drawerStyle: {
-                        backgroundColor: '#fff',
+                        backgroundColor: '#FEA900',
                     },
+                    drawerActiveTintColor: '#fff',
+                    drawerActiveBackgroundColor: '#ecaf99',
                 }} >
                 <Drawer.Screen name="Films" component={Films} />
                 <Drawer.Screen name="Favorites" component={FavoriteStack} />
@@ -92,8 +94,10 @@ function DrawerTv() {
             screenOptions={{
                 headerShown: false,
                 drawerStyle: {
-                    backgroundColor: '#fff',
+                    backgroundColor: '#FEA900',
                 },
+                drawerActiveTintColor: '#fff',
+                drawerActiveBackgroundColor: '#ecaf99',
 
             }}
         >

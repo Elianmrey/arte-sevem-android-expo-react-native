@@ -1,6 +1,7 @@
 import {View, Text, StyleSheet, Image, ScrollView,Dimensions,} from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import StarsRating from '../components/atomics/StarsRating.jsx';
+import { LinearGradient } from 'expo-linear-gradient';
 
 const { width } = Dimensions.get('window');
 
@@ -10,6 +11,9 @@ const Details = () => {
 
 
     return (
+        <LinearGradient
+            colors={['#1F0428', 'indigo', '#030E1F']} style={styles.container}
+        >
         <ScrollView style={styles.container}>
             <Image
                 source={{
@@ -28,14 +32,15 @@ const Details = () => {
                 <Text style={styles.overview}>{tvProgram.overview || 'Não Disponível'}</Text>
                 
             </View>
-        </ScrollView>
+            </ScrollView>
+        </LinearGradient>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#2c3e50',
+        
     },
     poster: {
         width: width,

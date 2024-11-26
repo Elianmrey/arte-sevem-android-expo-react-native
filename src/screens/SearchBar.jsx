@@ -51,7 +51,7 @@ export default function SearchBar() {
    
     return (
         <LinearGradient
-            colors={['#4c669f', '#3b5998', '#192f6a']}
+            colors={['#1F0428', 'indigo', '#030E1F']}
             style={styles.gradientContainer}
         >
             <TextInput

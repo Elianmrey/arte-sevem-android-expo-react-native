@@ -21,7 +21,7 @@ const FavoriteBar = () => {
     return (
         isClosed? <View style={styles.favoriteBar}>
             <View style={styles.closeIconContainer}>
-                 <Ionicons name='close' size={24} color="red" onPress={() => setIsClosed(!isClosed)} style={{  textAlign: 'end' }} />
+                 <Ionicons name='close' size={24} color="white" onPress={() => setIsClosed(!isClosed)} style={{  textAlign: 'end' }} />
             </View>
                 <Text style={styles.favoriteBarTitle}>Barra de Favoritos</Text>
             <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.favoriteList}>
@@ -29,7 +29,7 @@ const FavoriteBar = () => {
                 {isMovie.map((movie, index) => (
                     movie.date_release || movie.title || movie.original_title ?
                         <TouchableOpacity key={index}>
-                                <Ionicons name="remove-circle" size={24} color="red" onPress={() => removeFavorite(movie.id)} />
+                                <Ionicons name="remove-circle" size={24} color="orangered" onPress={() => removeFavorite(movie.id)} />
                                 <CardFilms  movie={movie} />
                         </TouchableOpacity>: null))  }
                        
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
         left: 0,
         right: 0,
         
-        backgroundColor: '#34495e',
+        backgroundColor: '#4A0099',
         paddingVertical: 10,
         paddingHorizontal: 10,
         zIndex: 100,

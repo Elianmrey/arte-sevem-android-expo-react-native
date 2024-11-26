@@ -12,7 +12,7 @@ const Favorites = () => {
 
     return (
         <LinearGradient
-            colors={['#4c669f', '#3b5998', '#192f6a']} style={styles.container}
+            colors={['#1F0428', 'indigo', '#030E1F']} style={styles.container}
         >
         <Text style={styles.title}>Favoritos</Text>
         <ScrollView contentContainerStyle={styles.favCardcontainer}>

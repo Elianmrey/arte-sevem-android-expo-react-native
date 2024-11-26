@@ -2,6 +2,7 @@ import {View, Text, StyleSheet, Image, ScrollView,Dimensions,} from 'react-nativ
 import { useRoute } from '@react-navigation/native';
 
 import StarsRating from '../components/atomics/StarsRating.jsx';
+import { LinearGradient } from 'expo-linear-gradient';
 
 const { width } = Dimensions.get('window');
 
@@ -10,6 +11,9 @@ const Details = () => {
     const { movie } = route.params; 
 
     return (
+        <LinearGradient
+            colors={['#1F0428', 'indigo', '#030E1F']} style={styles.container}
+        >
         <ScrollView style={styles.container}>
             <Image source={{uri: `https://image.tmdb.org/t/p/w500${movie.poster_path || movie.backdrop_path}`,}}
                 style={styles.poster} />
@@ -24,14 +28,15 @@ const Details = () => {
                 <Text style={styles.overviewTitle}>Sinopse:</Text>
                 <Text style={styles.overview}>{movie.overview}</Text>
             </View>
-        </ScrollView>
+            </ScrollView>
+        </LinearGradient>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#2c3e50',
+      
     },
     poster: {
         width: width,
