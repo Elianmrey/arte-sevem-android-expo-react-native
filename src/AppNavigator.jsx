@@ -29,7 +29,8 @@ function FilmsStack() {
         >
             <Stack.Screen name="FilmsMain" component={DrawerFilms} />
             <Stack.Screen name="FilmDetails" component={FilmDetails} />
-            <Stack.Screen name="FavoriteBar" component={FavoriteBarStack} /> 
+            <Stack.Screen name="TVDetails" component={TVDetails} />
+            <Stack.Screen name="FavoriteBar" component={FavoriteBarStack} />
         </Stack.Navigator>
     );
 }
@@ -43,6 +44,8 @@ function TvStack() {
         >
             <Stack.Screen name="TvMain" component={DrawerTv} />
             <Stack.Screen name="TVDetails" component={TVDetails} />
+            <Stack.Screen name="FilmDetails" component={FilmDetails} />
+            
             <Stack.Screen name="FavoriteBar" component={FavoriteBarStack} />
             
         </Stack.Navigator>
@@ -128,12 +131,7 @@ function FavoriteBarStack() {
                 headerShown: false,
             }}
         >
-            <Stack.Screen name="FavoriteBar" component={FavoriteBar} />
-            <Stack.Screen name="FilmDetails" component={FilmDetails} />
-            <Stack.Screen name="TVDetails" component={TVDetails} />
-            {/* <Stack.Screen name="CardTV" component={CardTV} />
-            <Stack.Screen name="CardFilm" component={CardFilm} /> */}
-
+            <Stack.Screen name="FavoriteBar" component={FavoriteBar} />           
         </Stack.Navigator>
     );
 }

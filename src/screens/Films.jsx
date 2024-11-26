@@ -4,12 +4,13 @@ import { getInfo } from '../services/TMDBService';
 import { LinearGradient } from 'expo-linear-gradient';
 import DraggableFilmCard from '../components/atomics/DraggableFilmCard';
 import FavoriteBar from '../components/composite/FavoriteBar';
-import { useFavorites } from '../context/FavoritesContext';
+import AddFavoritesBar from './../components/atomics/AddFavoritesBar';
+
 
 const Films = () => {
     
     const [movies, setMovies] = useState([]);
-    const { favorites } = useFavorites();
+    
 
     useEffect(() => {
         getInfo('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=pt-BR&page=1&sort_by=popularity.desc')
@@ -19,11 +20,15 @@ const Films = () => {
                 console.error(error);
             });
     }, []);
-
+        
     return (
         <LinearGradient
             colors={['#4c669f', '#3b5998', '#192f6a']} style={styles.container}
         >
+            
+<AddFavoritesBar />
+            
+
             <Text style={styles.title}>Filmes Populares</Text>
             <ScrollView contentContainerStyle={styles.cardsContainer}>
                 {movies.map((movie) => (

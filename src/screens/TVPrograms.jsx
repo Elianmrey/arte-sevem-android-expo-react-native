@@ -6,6 +6,7 @@ import { getInfo } from '../services/TMDBService';
 import { LinearGradient } from 'expo-linear-gradient';
 import DraggableTVCard from '../components/atomics/DraggableTVCard';
 import { ScrollView } from 'react-native';
+import AddFavoritesBar from '../components/atomics/AddFavoritesBar';
 
 const TvPrograms = () => {
     
@@ -20,16 +21,14 @@ const TvPrograms = () => {
             });
     }, []);
 
-    // Adicionar o Programa de TV à lista de favoritos
-   
 
-
-
-
+    
     return (
         <LinearGradient
             colors={['#4c669f', '#3b5998', '#192f6a']} style={styles.container}
         >
+            <AddFavoritesBar />
+
             <ScrollView  contentContainerStyle={styles.CardTVsContainer}>
 
                 <Text style={styles.title}>Programas de TV Populares</Text>
@@ -49,6 +48,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         background: 'linear-gradient(45deg,indigo, #34495e)',
         width: '100%',
+        padding: 15,
 
     },
     title: {
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     CardTVsContainer: {
-        justifyContent: 'space-between',
+        justifyContent: 'space-evenly',
         marginBottom: 100,
         width: '100%',
         flexDirection: 'row',

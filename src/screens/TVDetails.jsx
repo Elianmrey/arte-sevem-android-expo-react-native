@@ -1,4 +1,3 @@
-import React from 'react';
 import {View, Text, StyleSheet, Image, ScrollView,Dimensions,} from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import StarsRating from '../components/atomics/StarsRating';
@@ -9,7 +8,7 @@ const Details = () => {
     const route = useRoute();
     const { tvProgram } = route.params; // Recebe os detalhes do filme.
 
-    console.log(tvProgram);
+
     return (
         <ScrollView style={styles.container}>
             <Image

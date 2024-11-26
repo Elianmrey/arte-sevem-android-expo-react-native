@@ -64,7 +64,7 @@ export default function SearchBar() {
                 <Text style={styles.filterTitle}>Buscar por:</Text>
                 <RadioButton.Group
                     onValueChange={(newValue) => setSearchType(newValue)}
-                    value={searchType}>
+                    value={searchType} >
                     <View style={styles.checkboxRow}>
                         <RadioButton value="movie" />
                         <Text style={styles.checkboxText}>Filmes</Text>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -10,6 +10,13 @@ const FavoriteBar = () => {
     const { favorites, removeFavorite } = useFavorites();
 
     const [isClosed, setIsClosed] = useState(false);
+    const [isTV, setIsTV] = useState([]);
+    const [isMovie, setIsMovie] = useState([]);
+
+    useEffect(() => {
+        setIsMovie(favorites.filter((item) => item.date_release || item.title || item.original_title));
+        setIsTV (favorites.filter((item) => item.first_air_date && item.name && item.original_name));
+    }, [favorites]);
 
     return (
         isClosed? <View style={styles.favoriteBar}>
@@ -19,20 +26,20 @@ const FavoriteBar = () => {
                 <Text style={styles.favoriteBarTitle}>Barra de Favoritos</Text>
             <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.favoriteList}>
              
-                {favorites.map((item) => (
-                   item.date_release === 'movie' ?
-                        <TouchableOpacity>
-                            <Ionicons name="remove-circle" size={24} color="red" onPress={() => removeFavorite(item.id)} />
-                           <CardFilms key={item.id} movie={item} />
-                            
-                        </TouchableOpacity>
-                       :
-                        <TouchableOpacity >
-                            <Ionicons name="remove-circle" size={24} color="red" onPress={() => removeFavorite(item.id)} />
-                       <CardTV key={item.id} tvProgram={item}   />
+                {isMovie.map((movie, index) => (
+                    movie.date_release || movie.title || movie.original_title ?
+                        <TouchableOpacity key={index}>
+                                <Ionicons name="remove-circle" size={24} color="red" onPress={() => removeFavorite(movie.id)} />
+                                <CardFilms  movie={movie} />
+                        </TouchableOpacity>: null))  }
                        
-                </TouchableOpacity>
-            ))}
+                {isTV.map((tvProgram, index) => (
+                    tvProgram.first_air_date && tvProgram.name ?
+                        <TouchableOpacity key={index}>
+                            <Ionicons name="remove-circle" size={24} color="red" onPress={() => removeFavorite(tvProgram.id)} />
+                            <CardTV  tvProgram={tvProgram}   />
+                </TouchableOpacity> : null))
+            }
             </ScrollView>
         </View> : <View style={styles.closeIconContainer}>
                 <Text style={styles.favoriteBarTitle}>Lista de Favoritos</Text>
