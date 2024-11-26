@@ -3,6 +3,9 @@
 # dependencies
 node_modules/
 
+#folders
+.history/
+
 # Expo
 .expo/
 dist/
@@ -34,4 +37,6 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
 env.local.js
+
