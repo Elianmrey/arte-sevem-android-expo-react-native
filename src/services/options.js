@@ -1,4 +1,4 @@
-import { API_KEY } from '@env';
+import { API_KEY } from '../../env.local.js';
 
 export const options = {
     method: 'GET',
