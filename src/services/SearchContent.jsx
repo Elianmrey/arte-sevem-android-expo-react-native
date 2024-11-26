@@ -1,4 +1,4 @@
-import { options } from "./options";
+import { options } from "./options.jsx";
 
 export async function GetSearchResults(term) {
     try {

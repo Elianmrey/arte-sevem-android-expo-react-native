@@ -1,5 +1,5 @@
 
-import { options } from './options.js'
+import { options } from './options.jsx'
 
 async function getInfo(urlValue) {
 

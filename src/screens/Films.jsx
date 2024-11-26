@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react';
 import {StyleSheet, Text, ScrollView } from 'react-native';
 import { getInfo } from '../services/TMDBService';
 import { LinearGradient } from 'expo-linear-gradient';
-import DraggableFilmCard from '../components/atomics/DraggableFilmCard';
-import FavoriteBar from '../components/composite/FavoriteBar';
-import AddFavoritesBar from './../components/atomics/AddFavoritesBar';
+
+import DraggableFilmCard from '../components/atomics/DraggableFilmCard.jsx';
+import FavoriteBar from '../components/composite/FavoriteBar.jsx';
+import AddFavoritesBar from './../components/atomics/AddFavoritesBar.jsx';
 
 
 const Films = () => {

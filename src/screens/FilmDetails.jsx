@@ -1,6 +1,7 @@
 import {View, Text, StyleSheet, Image, ScrollView,Dimensions,} from 'react-native';
 import { useRoute } from '@react-navigation/native';
-import StarsRating from '../components/atomics/StarsRating';
+
+import StarsRating from '../components/atomics/StarsRating.jsx';
 
 const { width } = Dimensions.get('window');
 

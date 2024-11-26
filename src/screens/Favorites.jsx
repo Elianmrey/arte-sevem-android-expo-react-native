@@ -1,9 +1,11 @@
 import React from 'react';
 import { StyleSheet, ScrollView, Text } from 'react-native';
-import { useFavorites } from '../context/FavoritesContext';
-import CardTV from '../components/atomics/CardTV';
-import CardFilms from '../components/atomics/CardFilms';
 import { LinearGradient } from 'expo-linear-gradient';
+
+import { useFavorites } from '../context/FavoritesContext.jsx';
+import CardTV from '../components/atomics/CardTV.jsx';
+import CardFilms from '../components/atomics/CardFilms.jsx';
+
 
 const Favorites = () => {
     const { favorites } = useFavorites();

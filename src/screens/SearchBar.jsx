@@ -1,11 +1,13 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import { useState } from 'react';
 import { TextInput, StyleSheet, View, FlatList, Text } from 'react-native';
-import { GetSearchResults } from '../services/SearchContent';
-import CardFilms from '../components/atomics/CardFilms';
-import CardTV from '../components/atomics/CardTV';
 import { RadioButton } from 'react-native-paper';
 import { useFavorites } from '../context/FavoritesContext';
+
+import { GetSearchResults } from '../services/SearchContent.jsx';
+import CardFilms from '../components/atomics/CardFilms.jsx';
+import CardTV from '../components/atomics/CardTV.jsx';
+
 
 export default function SearchBar() {
     const [searchResult, setSearchResult] = useState([]);

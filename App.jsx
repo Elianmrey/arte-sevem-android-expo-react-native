@@ -1,6 +1,6 @@
 import React from 'react';
-import AppNavigator from './src/AppNavigator';
-import { FavoriteProvider } from './src/context/FavoritesContext';
+import AppNavigator from './src/AppNavigator.jsx';
+import { FavoriteProvider } from './src/context/FavoritesContext.jsx';
 
 export default function App() {
   return (

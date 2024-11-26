@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import {  StyleSheet, Text } from 'react-native';
-
-import FavoriteBar from '../components/composite/FavoriteBar';
-import { getInfo } from '../services/TMDBService';
+import {  StyleSheet, Text, ScrollView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import DraggableTVCard from '../components/atomics/DraggableTVCard';
-import { ScrollView } from 'react-native';
-import AddFavoritesBar from '../components/atomics/AddFavoritesBar';
+
+import FavoriteBar from '../components/composite/FavoriteBar.jsx';
+import { getInfo } from '../services/TMDBService.jsx';
+import DraggableTVCard from '../components/atomics/DraggableTVCard.jsx';
+
+import AddFavoritesBar from '../components/atomics/AddFavoritesBar.jsx';
 
 const TvPrograms = () => {
     
