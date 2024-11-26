@@ -65,11 +65,15 @@ const styles = StyleSheet.create({
         bottom: 0,
         left: 0,
         right: 0,
-        
         backgroundColor: '#4A0099',
         paddingVertical: 10,
         paddingHorizontal: 10,
         zIndex: 100,
+        borderStyle: 'solid',
+        borderTopWidth: 3,
+        borderColor: 'orange',
+        borderTopLeftRadius: 25,
+        borderTopRightRadius: 25,
     },
     favoriteBarTitle: {
         fontSize: 18,
