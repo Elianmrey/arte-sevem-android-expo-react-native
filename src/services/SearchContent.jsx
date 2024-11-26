@@ -1,4 +1,4 @@
-import { options } from "./options.js";
+import { options } from "./options.jsx";
 
 export async function GetSearchResults(term) {
     try {
@@ -7,10 +7,10 @@ export async function GetSearchResults(term) {
             throw new Error('Erro na requisição');
         }
         const data = await response.json();
-
-        return data.results || [];
+        
+        return data.results || [];  
     } catch (err) {
         console.error("Temos um erro", err);
-        return [];
+        return []; 
     }
 }

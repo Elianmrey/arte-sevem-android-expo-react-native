@@ -6,13 +6,13 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
 
-import Films from './screens/Films.js';
-import FilmDetails from './screens/FilmDetails.js';
-import Favorites from './screens/Favorites.js';
-import Search from './screens/SearchBar.js';
-import TvPrograms from './screens/TVPrograms.js';
-import TVDetails from './screens/TVDetails.js';
-import FavoriteBar from './components/composite/FavoriteBar.js';
+import Films from './screens/Films.jsx';
+import FilmDetails from './screens/FilmDetails.jsx';
+import Favorites from './screens/Favorites.jsx';
+import Search from './screens/SearchBar.jsx';
+import TvPrograms from './screens/TVPrograms.jsx';
+import TVDetails from './screens/TVDetails.jsx';
+import FavoriteBar from './components/composite/FavoriteBar.jsx';
 
 
 

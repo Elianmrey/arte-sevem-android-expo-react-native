@@ -1,6 +1,6 @@
 import {View, Text, StyleSheet, Image, ScrollView,Dimensions,} from 'react-native';
 import { useRoute } from '@react-navigation/native';
-import StarsRating from '../components/atomics/StarsRating.js';
+import StarsRating from '../components/atomics/StarsRating.jsx';
 import { LinearGradient } from 'expo-linear-gradient';
 
 const { width } = Dimensions.get('window');
