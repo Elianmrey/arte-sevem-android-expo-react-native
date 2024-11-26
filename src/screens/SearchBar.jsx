@@ -2,7 +2,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useState } from 'react';
 import { TextInput, StyleSheet, View, FlatList, Text } from 'react-native';
 import { GetSearchResults } from '../services/SearchContent';
-import Card from '../components/atomics/CardFilms';
+import CardFilms from '../components/atomics/CardFilms';
 import CardTV from '../components/atomics/CardTV';
 import { RadioButton } from 'react-native-paper';
 import { useFavorites } from '../context/FavoritesContext';
@@ -28,7 +28,7 @@ export default function SearchBar() {
 
     const renderItem = ({ item }) => {
         if (item.media_type === 'movie' && searchType === 'movie') {
-            return <Card movie={item} addToFavorites={() => { addFavorite(item) }} />;
+            return <CardFilms movie={item} addToFavorites={() => { addFavorite(item) }} />;
         }
        else if (item.media_type === 'tv' && searchType === 'tv') {
             return <CardTV tvProgram={item} addToFavorites={() => { addFavorite(item) }} />;
@@ -36,7 +36,7 @@ export default function SearchBar() {
         else if (searchType === 'movie or tv') {
             if (item.media_type === 'movie') {
                 return (
-                    <Card movie={item} addToFavorites={() => { addFavorite(item) }} />
+                    <CardFilms movie={item} addToFavorites={() => { addFavorite(item) }} />
                 )
             } else if (item.media_type === 'tv') {
                 return (

@@ -4,7 +4,7 @@ import { PanGestureHandler, State } from 'react-native-gesture-handler';
 
 const AddFavoritesBar = () => {
     const [isHovered, setIsHovered] = useState(false);
-    const translateX = useRef(new Animated.Value(-35)).current; // Estado inicial da posição
+    const translateX = useRef(new Animated.Value(-35)).current; // Inicio da posição
 
     // Gerenciamento do gesto (movimento)
     const handleGestureEvent = Animated.event(
