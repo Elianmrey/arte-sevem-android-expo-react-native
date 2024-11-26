@@ -151,7 +151,7 @@ export default function AppNavigator() {
                         else if (route.name === 'TvPrograms') {
                             iconName = focused? 'tv' : 'tv-outline';
                         }
-                        else if (route.name === 'Search') {
+                        else if (route.name === 'MainSearch') {
                             iconName = focused ? 'search' : 'search-outline';
                         }
                         return <Icon name={iconName} size={size} color={color} />;
@@ -177,7 +177,7 @@ export default function AppNavigator() {
                 />
         
                 <Tab.Screen
-                    name="Search"
+                    name="MainSearch"
                     component={SearchStack}
                     options={{
                         tabBarLabel: 'Buscar',

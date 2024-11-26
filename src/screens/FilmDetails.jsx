@@ -11,12 +11,8 @@ const Details = () => {
 
     return (
         <ScrollView style={styles.container}>
-            <Image
-                source={{
-                    uri: `https://image.tmdb.org/t/p/w500${movie.poster_path || movie.backdrop_path}`,
-                }}
-                style={styles.poster}
-            />
+            <Image source={{uri: `https://image.tmdb.org/t/p/w500${movie.poster_path || movie.backdrop_path}`,}}
+                style={styles.poster} />
             <View style={styles.detailsContainer}>
                 <Text style={styles.title}>{movie.title}</Text>
                 <Text style={styles.subtitle}>
