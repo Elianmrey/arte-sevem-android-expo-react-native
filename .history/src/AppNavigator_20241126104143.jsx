@@ -85,6 +85,7 @@ function SearchStack() {
     );
 }
 
+
 function DrawerTv() {
     return (
         <Drawer.Navigator
@@ -95,6 +96,7 @@ function DrawerTv() {
                 },
                 drawerActiveTintColor: '#fff',
                 drawerActiveBackgroundColor: '#ecaf99',
+
             }}
         >
             <Drawer.Screen name="Programas de TV" component={TvPrograms} />

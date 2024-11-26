@@ -63,7 +63,7 @@ function TvStack() {
                     drawerActiveTintColor: '#fff',
                     drawerActiveBackgroundColor: '#ecaf99',
                 }} >
-                <Drawer.Screen name="Filmes" component={Films} />
+                <Drawer.Screen name="Films" component={Films} />
                 <Drawer.Screen name="Favoritos" component={FavoriteStack} />
             </Drawer.Navigator>
         );
@@ -85,6 +85,9 @@ function SearchStack() {
     );
 }
 
+
+
+
 function DrawerTv() {
     return (
         <Drawer.Navigator
@@ -95,6 +98,7 @@ function DrawerTv() {
                 },
                 drawerActiveTintColor: '#fff',
                 drawerActiveBackgroundColor: '#ecaf99',
+
             }}
         >
             <Drawer.Screen name="Programas de TV" component={TvPrograms} />
