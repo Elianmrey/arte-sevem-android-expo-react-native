@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { options, optionPost } from './options';
-import * as Linking from 'expo-linking';
+
 
 
 let request_token = null;
@@ -11,15 +11,12 @@ async function GetRequestToken() {
         const data = await response.json();
 
         if (data?.request_token) {
-           console.log("Token de acesso obtido-------------------------------------++++++++++++++++-----------------:", data.request_token);
+          //  console.log("Token de acesso obtido-------------------------------------++++++++++++++++-----------------:", data.request_token);
 
-             //PASSO # 2 Redirecionar para o site do TMDB
-          // await redirectToTMDb( data.request_token); 
-          
           request_token = data.request_token
         }
     } catch (err) {
-        console.error("Erro na obtenção do token:", err);
+        // console.error("Erro na obtenção do token:");
         return null;
     }
 }
@@ -45,7 +42,7 @@ if (dataAuth.request_token) {
     return dataAuth;
 }
 else {
-console.error("Erro ao obter o token:", dataAuth);
+// console.error("Erro ao obter o token:");
 return null;
 }
 
@@ -75,13 +72,13 @@ return null;
            return sessionId;
 
            } else {
-          console.error("Erro ao obter o session ID:", dataSession);
+          console.error("Erro ao obter o session ID");
          
            }
           };
 
        } catch (err) {
-        console.error("Erro na obtenção do session ID:", err);
+        // console.error("Erro na obtenção do session ID:");
         return null;
     }
 }
@@ -97,7 +94,7 @@ export async function AuthenticatingUser(username, password) {
         }
 
     } catch (err) {
-        console.error("Erro na autenticação do usuário:", err);
+        // console.error("Erro na autenticação do usuário:");
         return null;
     }
 }

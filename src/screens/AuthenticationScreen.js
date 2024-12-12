@@ -1,4 +1,4 @@
-import { ActivityIndicator, StyleSheet, Text, TextInput, Button } from 'react-native';
+import { ActivityIndicator, StyleSheet, Text, TextInput, Button, Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { AuthenticatingUser } from '../services/AutenticationService.js';
 import { useState } from 'react';
@@ -18,14 +18,24 @@ export default function AuthenticationScreen({navigation}) {
 
   const useAsuthentication = async (username, password, navigation) => {
     try {
+      if(username, password) {
+      
     const response = await AuthenticatingUser(username, password);
 
-    if (response) {
-      console.log("Resposta de autenticação++++++++++++++++++++++++++++++++++++:", response,);
+    if (response && response !=='' && response !== null) {
+      // console.log("Resposta de autenticação++++++++++++++++++++++++++++++++++++:", response,);
       return navigation.navigate('ScreensIfAuthenticated', {session:response});
+    } 
+    else {
+      
+        alert('Usuário ou senha inválidos');
+      
     }
+  }else {
+    alert('Preencha os campos de usuário e senha');
+  }
     } catch (error) {
-      console.log(error);
+      alert('Usuário ou senha inválidos');
     }
   }
 
@@ -37,9 +47,11 @@ export default function AuthenticationScreen({navigation}) {
       colors={['#1F0428', 'indigo', '#030E1F']}
       style={styles.container}
     >
-      <Text style={styles.title}>Usuário:</Text>
+      <Image source={require('../../assets/logo.png')} style={styles.image} />
+      <Text style={styles.title}>Arte Se7em</Text>
+      <Text style={styles.text}>Usuário:</Text>
       <TextInput placeholder="Username" onChangeText={(text) => InnTextControl('username', text)} style={styles.inputText} />
-      <Text style={styles.title}>Senha:</Text>
+      <Text style={styles.text}>Senha:</Text>
       <TextInput placeholder="Password" secureTextEntry={true} onChangeText={(text) => InnTextControl('password', text)} style={styles.inputText} />
       <Button title="Entrar ✌️" onPress={() => useAsuthentication(loginData.username, loginData.password, navigation)} />
     </LinearGradient>
@@ -53,6 +65,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
+    fontSize: 40,
+    fontWeight: 'bold',
+    color: 'white',
+    marginBottom: 20,
+  },
+  text: {
     fontSize: 25,
     fontWeight: 'bold',
     color: 'white',
@@ -65,5 +83,10 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: 'white',
     borderRadius: 5,
+  },
+  image: {
+    width: 200,
+    height: 200,
+    marginBottom: 20,
   },
 });

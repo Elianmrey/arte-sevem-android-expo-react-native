@@ -167,7 +167,7 @@ function  ScreensIfAuthenticated({route}) {
             screenOptions={{
                 headerShown: false,
             }}>
-            <Stack.Screen name="Authentication" component={AuthenticationScreen} />
+            <Stack.Screen name="Authentication" component={AuthenticationScreen} inicialParams={{session: null}}/>
         </Stack.Navigator>
     );
 }
