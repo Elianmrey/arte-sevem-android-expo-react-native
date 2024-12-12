@@ -92,8 +92,7 @@ export async function AuthenticatingUser(username, password) {
         const response = await SessionIdRequest(username,password);
 
         if (response) {
-          console.log("Resposta de autenticação++++++++++++++++++++++++++++++++++++:", response,);
-           
+          // console.log("Resposta de autenticação++++++++++++++++++++++++++++++++++++:", response,);
            return response;
         }
 
