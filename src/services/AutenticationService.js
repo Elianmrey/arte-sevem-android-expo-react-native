@@ -25,33 +25,6 @@ async function GetRequestToken() {
 }
  
 
-//Redirecionar para o site do TMDB (Utilidade de GetRequestToken)
-async function redirectToTMDb(requestToken) {
-  const url = `https://www.themoviedb.org/authenticate/${requestToken}`;
-  try {
-  
-    const response = await Linking.openURL(url);
-    
-    console.log("Token Retornado com aprovação de autenticação  ", response);
-
-   if (!response) {
-      throw new Error('Nenhuma resposta recebida ao redirecionar para o navegador.');
-    }else if (response.ok ) {
-      return requestToken;
-    }
-    
-    
-  } catch (err) {
-    console.error("Erro ao redirecionar para o navegador:", err);
-  }
-  
-}
-
-
-
-
-
-
 // PASSO # 2 Validar o Token 
 async function ValidateToken(username, password) {
  
@@ -65,12 +38,9 @@ async function ValidateToken(username, password) {
 
 const dataAuth = await responseAuth.json();
 
-
-// console.log("Resposta de autenticação-=-=-=-=-=-=-=-=-=-=-=-=-=-:", dataAuth);
-
 if (dataAuth.request_token) {
 
-    console.log("Autenticação bem-sucedida-----------------------+++++++++++++++:", dataAuth);
+    // console.log("Autenticação bem-sucedida-----------------------+++++++++++++++:", dataAuth);
 
     return dataAuth;
 }
@@ -82,15 +52,12 @@ return null;
 }
 
 
-
-
-
  async function SessionIdRequest(username, password) {
     try {
-        //PASSO #1 obtém um token de acesso para a API
+        //PASSO #1 obtér o token de acesso para a API
           await GetRequestToken();
          
-          //PASSO #2 Redirecionar para o site do TMDB
+          //PASSO #2 Validar o token de acesso para a API
       const validatedToken = await ValidateToken(username, password);
           
       //PASSO #3 Obtém um session ID para o usuário
@@ -98,13 +65,15 @@ return null;
           
         const responseSession = await fetch(`https://api.themoviedb.org/3/authentication/session/new?request_token=${validatedToken.request_token}`, options);
           const dataSession = await responseSession.json();
-           console.log("Resposta de autenticação antes de verificar o session ID       ----------------------------------------------------------------:", dataSession);
+          //  console.log("Resposta de autenticação antes de verificar o session ID       ----------------------------------------------------------------:", dataSession);
           if (dataSession.session_id) {
-          //PASSO #4 Obtém um session ID para o usuário
-            
+          
+            //PASSO #4 Obtém um session ID para o usuário
           const sessionId = dataSession.session_id;
-           console.log("Session ID obtido Agora------------------------------------------------:", sessionId);
+
+          //  console.log("Session ID obtido Agora------------------------------------------------:", sessionId);
            return sessionId;
+
            } else {
           console.error("Erro ao obter o session ID:", dataSession);
          
@@ -117,7 +86,7 @@ return null;
     }
 }
 
-// Autenticar o usuário
+// Autenticar o usuário FUNÇÃO PRINCIPAL PARA AUTENTICAÇÃO...
 export async function AuthenticatingUser(username, password) {
     try {
         const response = await SessionIdRequest(username,password);
