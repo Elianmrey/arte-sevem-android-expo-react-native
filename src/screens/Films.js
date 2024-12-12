@@ -8,6 +8,7 @@ import FavoriteBar from '../components/composite/FavoriteBar.js';
 import AddFavoritesBar from '../components/atomics/AddFavoritesBar.js';
 
 
+
 const Films = () => {
     
     const [movies, setMovies] = useState([]);
@@ -21,11 +22,15 @@ const Films = () => {
                 console.error(error);
             });
     }, []);
-        
+
+
+
+
+
+     
     return (
         <LinearGradient
-            colors={['#1F0428', 'indigo', '#030E1F']} style={styles.container}
-        >
+            colors={['#1F0428', 'indigo', '#030E1F']} style={styles.container}>
             
 <AddFavoritesBar />
             

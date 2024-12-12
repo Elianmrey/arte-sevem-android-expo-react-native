@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-
+import AuthenticationScreen from './screens/AuthenticationScreen.js';
 
 import Films from './screens/Films.js';
 import FilmDetails from './screens/FilmDetails.js';
@@ -22,10 +22,8 @@ const Drawer = createDrawerNavigator();
 // Configuração da Stack Navigator para a aba "Films" (Grupo de abas de Films junto com os detalhes dos filmes e programas de TV, com os a Stack Navigator de Favoritos)
 function FilmsStack() {
     return (
-        <Stack.Navigator
-            screenOptions={{
-                headerShown: false,
-            }}>
+        <Stack.Navigator screenOptions={{ headerShown: false, }} initialRouteName='Authentication'>
+            <Stack.Screen name="Authentication" component={AuthenticationScreen} />
             <Stack.Screen name="FilmsMain" component={DrawerFilms} />
             <Stack.Screen name="FilmDetails" component={FilmDetails} />
             <Stack.Screen name="TVDetails" component={TVDetails} />
@@ -158,30 +156,9 @@ export default function AppNavigator() {
                 })}
 >
           
-                <Tab.Screen
-                    name="Films"
-                    component={FilmsStack}
-                    options={{
-                        tabBarLabel: 'Filmes',
-                    }}
-                   
-                />
-                <Tab.Screen
-                    name="TvPrograms"
-                    component={TvStack}
-                    options={{
-                        tabBarLabel: 'Programas de TV',
-                    }}
-
-                />
-        
-                <Tab.Screen
-                    name="MainSearch"
-                    component={SearchStack}
-                    options={{
-                        tabBarLabel: 'Buscar',
-                    }}
-                />
+                <Tab.Screen name="Films" component={FilmsStack} options={{ tabBarLabel: 'Filmes',}} />
+                <Tab.Screen name="TvPrograms" component={TvStack} options={{ tabBarLabel: 'Programas de TV',}} />
+                <Tab.Screen name="MainSearch" component={SearchStack} options={{ tabBarLabel: 'Buscar', }} />
             </Tab.Navigator>
            
             
