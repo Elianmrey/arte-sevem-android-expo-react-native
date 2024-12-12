@@ -53,7 +53,7 @@ export default function AuthenticationScreen({navigation}) {
       <TextInput placeholder="Username" onChangeText={(text) => InnTextControl('username', text)} style={styles.inputText} />
       <Text style={styles.text}>Senha:</Text>
       <TextInput placeholder="Password" secureTextEntry={true} onChangeText={(text) => InnTextControl('password', text)} style={styles.inputText} />
-      <Button title="Entrar ✌️" onPress={() => useAsuthentication(loginData.username, loginData.password, navigation)} />
+      <Button title="Entrar ⏩" onPress={() => useAsuthentication(loginData.username, loginData.password, navigation)} />
     </LinearGradient>
   );
 }
