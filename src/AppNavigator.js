@@ -22,8 +22,7 @@ const Drawer = createDrawerNavigator();
 // Configuração da Stack Navigator para a aba "Films" (Grupo de abas de Films junto com os detalhes dos filmes e programas de TV, com os a Stack Navigator de Favoritos)
 function FilmsStack() {
     return (
-        <Stack.Navigator screenOptions={{ headerShown: false, }} initialRouteName='Authentication'>
-            <Stack.Screen name="Authentication" component={AuthenticationScreen} />
+        <Stack.Navigator screenOptions={{ headerShown: false, }} >
             <Stack.Screen name="FilmsMain" component={DrawerFilms} />
             <Stack.Screen name="FilmDetails" component={FilmDetails} />
             <Stack.Screen name="TVDetails" component={TVDetails} />
@@ -129,38 +128,67 @@ function FavoriteBarStack() {
 }
 
 
+
+function  ScreensIfAuthenticated({route}) {
+    const {session} = route.params;
+    // const session = AsyncLocalStorage.get('session'); 
+    if (session) {
+    return (
+        <Tab.Navigator
+        screenOptions={({ route }) => ({
+            headerShown: false,
+            tabBarStyle: { backgroundColor: 'indigo' },
+            tabBarActiveTintColor: 'orange',
+            tabBarInactiveTintColor: 'grey',
+            tabBarIcon: ({ focused, color, size }) => {
+                let iconName;
+
+                if (route.name === 'Films') {
+                    iconName = focused ? 'film' : 'film-outline';
+                }
+                else if (route.name === 'TvPrograms') {
+                    iconName = focused? 'tv' : 'tv-outline';
+                }
+                else if (route.name === 'MainSearch') {
+                    iconName = focused ? 'search' : 'search-outline';
+                }
+                return <Icon name={iconName} size={size} color={color} />;
+            },})} initialRouteName='Films'>
+  
+        <Tab.Screen name="Films" component={FilmsStack} options={{ tabBarLabel: 'Filmes',}} />
+        <Tab.Screen name="TvPrograms" component={TvStack} options={{ tabBarLabel: 'Programas de TV',}} />
+        <Tab.Screen name="MainSearch" component={SearchStack} options={{ tabBarLabel: 'Buscar', }} />
+    </Tab.Navigator>
+    )
+}else 
+{
+    return (
+        <Stack.Navigator
+            screenOptions={{
+                headerShown: false,
+            }}>
+            <Stack.Screen name="Authentication" component={AuthenticationScreen} />
+        </Stack.Navigator>
+    );
+}
+}
+
+
+
+
+
+
+
+
+
 export default function AppNavigator() {
     return (
         <NavigationContainer>
-            
-            <Tab.Navigator
-                screenOptions={({ route }) => ({
-                    headerShown: false,
-                    tabBarStyle: { backgroundColor: 'indigo' },
-                    tabBarActiveTintColor: 'orange',
-                    tabBarInactiveTintColor: 'grey',
-                    tabBarIcon: ({ focused, color, size }) => {
-                        let iconName;
-
-                        if (route.name === 'Films') {
-                            iconName = focused ? 'film' : 'film-outline';
-                        }
-                        else if (route.name === 'TvPrograms') {
-                            iconName = focused? 'tv' : 'tv-outline';
-                        }
-                        else if (route.name === 'MainSearch') {
-                            iconName = focused ? 'search' : 'search-outline';
-                        }
-                        return <Icon name={iconName} size={size} color={color} />;
-                    },
-                })}
->
+            <Stack.Navigator screenOptions={{ headerShown: false, }}>
+            <Stack.Screen name="Authentication" component={AuthenticationScreen} />
+            <Stack.Screen name="ScreensIfAuthenticated" component={ScreensIfAuthenticated} initialParams={{session: null}} />
           
-                <Tab.Screen name="Films" component={FilmsStack} options={{ tabBarLabel: 'Filmes',}} />
-                <Tab.Screen name="TvPrograms" component={TvStack} options={{ tabBarLabel: 'Programas de TV',}} />
-                <Tab.Screen name="MainSearch" component={SearchStack} options={{ tabBarLabel: 'Buscar', }} />
-            </Tab.Navigator>
-           
+           </Stack.Navigator>
             
         </NavigationContainer>
     );

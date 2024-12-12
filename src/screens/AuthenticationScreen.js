@@ -4,7 +4,8 @@ import { AuthenticatingUser } from '../services/AutenticationService.js';
 import { useState } from 'react';
 import { AsyncStorage } from 'react-native';
 
-export default function AuthenticationScreen() {
+
+export default function AuthenticationScreen({navigation}) {
   const [loginData, setLoginData] = useState({
     username: '',
     password: '',
@@ -13,6 +14,23 @@ export default function AuthenticationScreen() {
   const InnTextControl = (field, value) => {
     setLoginData((prevData) => ({ ...prevData, [field]: value }));
   };
+
+
+  const useAsuthentication = async (username, password, navigation) => {
+    try {
+    const response = await AuthenticatingUser(username, password);
+
+    if (response) {
+      console.log("Resposta de autenticação++++++++++++++++++++++++++++++++++++:", response,);
+      return navigation.navigate('ScreensIfAuthenticated', {session:response});
+    }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
+
 
   return (
     <LinearGradient
@@ -23,7 +41,7 @@ export default function AuthenticationScreen() {
       <TextInput placeholder="Username" onChangeText={(text) => InnTextControl('username', text)} style={styles.inputText} />
       <Text style={styles.title}>Senha:</Text>
       <TextInput placeholder="Password" secureTextEntry={true} onChangeText={(text) => InnTextControl('password', text)} style={styles.inputText} />
-      <Button title="Entrar ✌️" onPress={() => AuthenticatingUser(loginData.username, loginData.password).then((response) => AsyncStorage.setItem('token', response.request_token)) } />
+      <Button title="Entrar ✌️" onPress={() => useAsuthentication(loginData.username, loginData.password, navigation)} />
     </LinearGradient>
   );
 }
