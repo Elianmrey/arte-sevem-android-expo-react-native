@@ -1,8 +1,8 @@
-import { ActivityIndicator, StyleSheet, Text, TextInput, Button, Image } from 'react-native';
+import {  StyleSheet, Text, TextInput, Button, Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { AuthenticatingUser } from '../services/AutenticationService.js';
 import { useState } from 'react';
-import { AsyncStorage } from 'react-native';
+import { CameraView } from 'expo-camera';
 
 
 export default function AuthenticationScreen({navigation}) {
@@ -47,6 +47,7 @@ export default function AuthenticationScreen({navigation}) {
       colors={['#1F0428', 'indigo', '#030E1F']}
       style={styles.container}
     >
+      <CameraView style={styles.containerCamera}>
       <Image source={require('../../assets/logo.png')} style={styles.image} />
       <Text style={styles.title}>Arte Se7em</Text>
       <Text style={styles.text}>Usuário:</Text>
@@ -54,6 +55,7 @@ export default function AuthenticationScreen({navigation}) {
       <Text style={styles.text}>Senha:</Text>
       <TextInput placeholder="Password" secureTextEntry={true} onChangeText={(text) => InnTextControl('password', text)} style={styles.inputText} />
       <Button title="Entrar ⏩" onPress={() => useAsuthentication(loginData.username, loginData.password, navigation)} />
+      </CameraView >
     </LinearGradient>
   );
 }
@@ -61,6 +63,12 @@ export default function AuthenticationScreen({navigation}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  containerCamera: {
+    flex: 1,
+    width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
   },
