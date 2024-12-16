@@ -187,9 +187,7 @@ export default function AppNavigator() {
             <Stack.Navigator screenOptions={{ headerShown: false, }}>
             <Stack.Screen name="Authentication" component={AuthenticationScreen} />
             <Stack.Screen name="ScreensIfAuthenticated" component={ScreensIfAuthenticated} initialParams={{session: null}} />
-          
-           </Stack.Navigator>
-            
+            </Stack.Navigator>
         </NavigationContainer>
     );
 }
