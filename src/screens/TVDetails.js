@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet, Image, ScrollView,Dimensions,} from 'react-native';
+import {View, Text, StyleSheet, Image, ScrollView,Dimensions,Platform, StatusBar,} from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 import StarsRating from '../components/atomics/StarsRating.js';
@@ -40,6 +40,13 @@ const Details = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        padding: 10,
+        ...Platform.select({
+            android: {
+                paddingTop: StatusBar.currentHeight,
+            },
+           default: { paddingTop: 15 },
+        }),
         
     },
     poster: {

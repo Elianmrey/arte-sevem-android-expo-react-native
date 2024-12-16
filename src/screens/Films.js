@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import {StyleSheet, Text, ScrollView } from 'react-native';
+import {StyleSheet, Text, ScrollView,Platform, StatusBar, } from 'react-native';
 import { getInfo } from '../services/TMDBService.js';
 import { LinearGradient } from 'expo-linear-gradient';
 
@@ -51,6 +51,13 @@ const Films = () => {
 
 const styles = StyleSheet.create({
     container: {
+        padding: 10,
+        ...Platform.select({
+            android: {
+                paddingTop: StatusBar.currentHeight,
+            },
+           default: { paddingTop: 15 },
+        }),
         flex: 1,
         alignItems: 'start',
         justifyContent: 'flex-start',

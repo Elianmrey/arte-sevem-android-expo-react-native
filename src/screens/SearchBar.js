@@ -1,6 +1,6 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import { useState } from 'react';
-import { TextInput, StyleSheet, View, FlatList, Text } from 'react-native';
+import { TextInput, StyleSheet, View, FlatList, Text, Platform, StatusBar, } from 'react-native';
 import { RadioButton } from 'react-native-paper';
 import { useFavorites } from '../context/FavoritesContext.js';
 
@@ -95,9 +95,9 @@ export default function SearchBar() {
                 </View>
             ) : (
                 <View style={styles.noResults}>
-                    <Text style={styles.noResultsText}>
-                        Vamos encontrar os melhores filmes e programas de TV!
-                    </Text>
+                {Platform.OS === 'android' ?<Text style={styles.noResultsText}>Vamos encontrar os melhores filmes e programas de TV!</Text>:  <Text style={styles.noResultsText}>
+                       Por favor, insira o nome deum filme ou programa de TV para buscar.
+                    </Text>}
                 </View>
             )}
         </LinearGradient>
@@ -106,10 +106,16 @@ export default function SearchBar() {
 
 const styles = StyleSheet.create({
     gradientContainer: {
+        padding: 10,
+        ...Platform.select({
+            android: {
+                paddingTop: StatusBar.currentHeight,
+            },
+           default: { paddingTop: 15 },
+        }),
         flex: 1,
         alignItems: 'center',
         justifyContent: 'flex-start',
-        padding: 10,
         width: '100%',
     },
     input: {
